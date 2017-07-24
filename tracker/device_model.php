@@ -11,12 +11,12 @@
 		private $time_located;
 
 		function __construct($_id, $_token, $_user, $_remote, $_forwarded, $_time) {
-			this->id = $_id;
-			this->token = $_token;
-			this->user_agent = $_user;
-			this->ip_remote_addr = $_remote;
-			this->ip_forwarded_for = $_forwarded;
-			this->time_located = $_time;
+			$this->id = $_id;
+			$this->token = $_token;
+			$this->user_agent = $_user;
+			$this->ip_remote_addr = $_remote;
+			$this->ip_forwarded_for = $_forwarded;
+			$this->time_located = $_time;
 		}
 
 		public function Save() {

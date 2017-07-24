@@ -6,7 +6,7 @@
 		// Create session variable
 		$_SESSION['token'] = random_str(45); // Length of 45 chars, default alphanumeric keyspace
 		$time =  date("Y-m-d H:i:s"); // We need to pass a variable to bindParam for futureproofing reasons
-		$device = new Device(0, $_SESSION['token'], $_SESSION['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_X_FORWARDED_FOR'], $time);
+		$device = new Device(0, $_SESSION['token'], $_SESSION['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_X_FORWARDED_FOR'], $time); // Pass an ID of zero and have MySQL set it automatically
 		if ($device->Save()) {
 			$color = "green";
 			$message = "Success!";
