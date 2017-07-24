@@ -1,29 +1,18 @@
 <?php
 	// As soon as someone opens the page, open a session, then add them to the 'devices' table
-	require '../auth/database.php';
-	require 'token.php'; // Has a function for generating tokens
+	require 'device_model.php';
+
 	if (!isset($_SESSION['token'])) { // If the user doesn't already have a session, give them one and add them to the database
 		// Create session variable
 		$_SESSION['token'] = random_str(45); // Length of 45 chars, default alphanumeric keyspace
-
-		$sql = "INSERT INTO devices (token, user_agent, ip_remote_addr, ip_forwarded_for, time_located) VALUES (:token, :user_agent, :ip_remote_addr, :ip_forwarded_for, :time_located);";
-		$stmt = $conn->prepare($sql); // We get $conn from auth/database.php
-
-		// Always bind parameters, SQL injection is so 2003
-		$stmt->bindParam(":token", $_SESSION['token']); // The token we gave the user
-		$stmt->bindParam(":user_agent", $_SERVER['HTTP_USER_AGENT']); // UserAgent header string
-		$stmt->bindParam(":ip_remote_addr", $_SERVER['REMOTE_ADDR']); // The address the connection was made from
-		$stmt->bindParam(":ip_forwarded_for", $_SERVER['HTTP_X_FORWARDED_FOR']); // An HTTP header sometimes set by proxy servers -- if set do not implicitly trust
 		$time =  date("Y-m-d H:i:s"); // We need to pass a variable to bindParam for futureproofing reasons
-		$stmt->bindParam(":time_located", $time); // Date formatted for MySQL's DATE type
-		
-		// Run the statement
-		if ($stmt->execute()) {
+		$device = new Device(0, $_SESSION['token'], $_SESSION['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_X_FORWARDED_FOR'], $time);
+		if ($device->Save()) {
 			$color = "green";
-			$message = "Successfully caught prey";
+			$message = "Success!";
 		} else {
 			$color = "red";
-			$message = "Nope";
+			$message = "Nope"
 		}
 	}
 ?>
