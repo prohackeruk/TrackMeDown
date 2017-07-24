@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	require 'auth/database.php';
-	require 'auth/strings.php';
+	require 'database.php';
+	require 'strings.php';
 
 	if (isset($_SESSION['user_id'])) {
 		$message = $ALREADY_LOGGED_IN_ERROR;
