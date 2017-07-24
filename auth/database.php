@@ -1,8 +1,8 @@
 <?php
 	$server = 'localhost';
 	$username = 'root';
-	$password = 'root';
-	$database = 'prohackid';
+	$password = 'g0db0x11$';
+	$database = 'TrackMeDown';
 
 	try {
 		$conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
