@@ -13,9 +13,7 @@
 	if (isset($_POST['email']) and isset($_POST['password']) and isset($_POST['confirm_password'])) {
 		if ($_POST['password'] != $_POST['confirm_password']) {
 			$message = $PASSWORD_CONFIRM_NO_MATCH_ERROR;
-		} else if (!preg_match($EMAIL_PATTERN, $_POST['email'])) {
-			$message = $EMAIL_NOT_VALID_ERROR;
-		} else {
+		else {
 			// Look for the entered email address in the database
 			$sql = "SELECT id,email,password FROM users WHERE email = :email";
 

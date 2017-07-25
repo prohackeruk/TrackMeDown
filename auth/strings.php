@@ -12,7 +12,4 @@
 	// Success messages
 	$REGISTER_SUCCESS = 'Registration successful, redirecting...';
 	$LOGIN_SUCCESS = 'Login successful, redircting...';
-
-	// Regex patterns
-	$EMAIL_PATTERN = '/^(\S+)@(\S+)\.(\S+)$/';
 ?>

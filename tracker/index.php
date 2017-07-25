@@ -31,7 +31,8 @@
 <html>
 <head>
 <!-- The basis for this JS is the part I heartlessly stole from DemmSec - props to those guys for being fantastic -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> <!-- jQuery -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 function postData(url, _token, _lat, _long) {
 	$.post(url, {token: _token, latitude: _lat, longitude: _long})
