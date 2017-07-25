@@ -2,8 +2,8 @@
 <?php 
 	session_start();
 
-	require 'auth/database.php';
-	require 'auth/strings.php';
+	require '../auth/database.php';
+	require '../auth/strings.php';
 
 	$user = NULL;
 
@@ -24,20 +24,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Index | prohack-id</title>
+	<title>TrackMeDown | Map</title>
 </head>
 <body>
-
-	<h1>prohack-id</h1>
-
 	<?php if (!empty($user)): ?>
-		<!-- Your code here -->
-		<h1>You are logged in as <?= $user['email']; ?></h1>
-
-		<a href="auth/logout.php">Log Out</a>
+		<!-- MAP -->
+		<p>You are logged in as <?= $user['email']; ?></p>
+		<h1>MAP GOES HERE</h1>
+		<a href="../auth/logout.php">Log Out</a>
 	<?php else: ?>
-		<a href="auth/login.php">Log In Here</a>
-		<a href="auth/register.php">Register Here</a>
+		<h3>You need to log in to view the map.</h3>
+		<a href="../auth/login.php">Log In Here</a>
+		<a href="../auth/register.php">Register Here</a>
 	<?php endif; ?>
 
 </body>

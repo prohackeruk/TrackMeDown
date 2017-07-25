@@ -48,7 +48,7 @@
 		<p><?= $message ?></p>
 	<?php endif; ?>
 
-	<form action="auth/ogin.php" method="POST">
+	<form action="login.php" method="POST">
 		<!-- Make the email address the placeholder -->
 		<?php if (isset($_POST['email'])): ?>
 			<input type="text" name="email" placeholder="Enter your email" value="<?= htmlspecialchars($_POST['email']) ?>" required>
@@ -59,7 +59,7 @@
 		<input type="submit" name="submit">
 	</form>
 
-	<a href="auth/register.php">Register Here</a>
+	<a href="register.php">Register Here</a>
 
 </body>
 </html>
