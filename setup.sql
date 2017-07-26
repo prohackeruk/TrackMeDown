@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS locations;
 CREATE TABLE locations (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, -- PK
 	device_id INT UNSIGNED NOT NULL, -- The target that this ping relates to. Note: this field has to be INT UNSIGNED because the field it FK's to is INT UNSIGNED, otherwise it's a type mismatch and the this table won't get created
-	latitude DOUBLE NOT NULL, -- Half a coordinate
-	longitude DOUBLE NOT NULL, -- The other half of the coordinate
+	latitude DECIMAL NOT NULL, -- Half a coordinate
+	longitude DECIMAL NOT NULL, -- The other half of the coordinate
 	address VARCHAR(100) NOT NULL, -- Their address, reverse geocoded from the coordinates
 	time_located DATETIME NOT NULL, -- The time at which the location ping was received
 	CONSTRAINT `fk_location_device` -- Delete all location data about a device when the device is deleted

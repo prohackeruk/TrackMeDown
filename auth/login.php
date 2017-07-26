@@ -6,7 +6,7 @@
 
 	if (isset($_SESSION['user_id'])) {
 		$message = $ALREADY_LOGGED_IN_ERROR;
-		header("Location: /");
+		header("Location: /maps/");
 	}
 
 	$message = '';
@@ -25,7 +25,7 @@
 			$message = $LOGIN_SUCCESS;
 			// Create a session
 			$_SESSION['user_id'] = $results['id'];
-			header("Location: /");
+			header("Location: /maps/");
 
 		} else {
 			$message = $PASSWORD_VERIFY_ERROR;
