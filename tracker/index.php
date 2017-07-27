@@ -44,7 +44,8 @@ function postData(url, _token, _lat, _long) {
 function autoUpdate() {
 	navigator.geolocation.getCurrentPosition(function(position) {
 		postData("../logme/index.php", "<?php echo $_SESSION['token'] ?>", position.coords.latitude, position.coords.longitude);
-		console.log("<?php echo $_SESSION['token'] ?>");
+		console.log(position.coords.latitude + ", " + position.coords.longitude);
+		//console.log("<?php echo $_SESSION['token'] ?>");
 		setTimeout(autoUpdate, 1000);
 	});
 }

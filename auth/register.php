@@ -13,7 +13,7 @@
 	if (isset($_POST['email']) and isset($_POST['password']) and isset($_POST['confirm_password'])) {
 		if ($_POST['password'] != $_POST['confirm_password']) {
 			$message = $PASSWORD_CONFIRM_NO_MATCH_ERROR;
-		else {
+		} else {
 			// Look for the entered email address in the database
 			$sql = "SELECT id,email,password FROM users WHERE email = :email";
 
@@ -62,9 +62,9 @@
 
 	<form action="register.php" method="POST">
 		<?php if (isset($_POST['email'])): ?>
-			<input type="text" name="email" placeholder="Enter your email" value="<?= htmlspecialchars($_POST['email']) ?>" required>
+			<input type="text" name="email" placeholder="Pick a username" value="<?= htmlspecialchars($_POST['email']) ?>" required>
 		<?php else: ?>
-			<input type="text" name="email" placeholder="Enter your email" required>
+			<input type="text" name="email" placeholder="Pick a username" required>
 		<?php endif; ?>
 		<input type="password" name="password" placeholder="Choose a password" required>
 		<input type="password" name="confirm_password" placeholder="Confirm password" required>

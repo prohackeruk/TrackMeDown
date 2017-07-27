@@ -1,8 +1,8 @@
 <?php
-	$server = 'localhost';
-	$username = 'root';
-	$password = 'g0db0x11$';
-	$database = 'TrackMeDown';
+	$server = 'YOUR_SEVER';
+	$username = 'YOUR_USERNAME';
+	$password = 'YOUR_PASSWORD';
+	$database = 'TrackMeDown'; // This is set by the sql setup script so don't change it
 
 	try {
 		$conn = new PDO("mysql:host=$server;dbname=$database;", $username, $password);

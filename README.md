@@ -14,9 +14,9 @@ Features:
 * Support for tracking multiple users at once (there's no hard limit, so whatever your server can take)
 * Each user's UserAgent header and IP address is logged when they first connect
 * Authentication so that only you and anybody who's cracked your crap password can see the data produced
+* All of the data produced by a device is displayed as a line on the map
 
 Planned features:
-* Maps! You will be able to see the path that each user is taking plotted out on a map. Google maps is great.
 * A random color for each device's polyline, which can be changed
 * Deleting devices who's data you no longer need/want
 * PHP session remembering so that each user can be tracked multiple times and remembered

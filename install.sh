@@ -14,7 +14,6 @@ then
 		# Just for my system
 		pkill python3
 		systemctl start apache2 # Start apache, it doesn't matter if it's already running, it will just pass
-		# systemctl start nginx
 		# systemctl start <your preferred web server>
 		systemctl start mysql # Start MySQL
 		# systemctl start <your preferred database>
