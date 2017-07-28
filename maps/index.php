@@ -100,6 +100,13 @@
 					strokeWeight: 3
 				});
 				poly.setMap(map);
+				// Add a marker at the last point
+				var marker = new google.maps.Marker({
+					position: points[points.length - 1],
+					map: map,
+					title: device['token']
+				});
+				marker.setMap(map);
 			});
 			setTimeout(updatePaths, 10000); // Update the map every ten seconds
 			console.log("Updated paths");

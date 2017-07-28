@@ -3,6 +3,7 @@
 	require '../auth/database.php';
 	require 'token.php'; // Has a function for generating tokens
 
+	session_start();
 
 	if (!isset($_SESSION['token'])) { // If the user doesn't already have a session, give them one and add them to the database
 		// Create session variable
@@ -21,9 +22,12 @@
 			$color = "green";
 			$message = "Success!";
 		} else {
-			$color = "green";
-			$message = "Success!";
+			$color = "red";
+			$message = "Nope";
 		} 
+	} else { // You've already got a session
+		$color = "green";
+		$message = "Success!";
 	}
 ?>
 
