@@ -1,7 +1,7 @@
 <?php
 	$server = 'localhost';
 	$username = 'root';
-	$password = 'g0db0x11$';
+	$password = 'root';
 	$database = 'TrackMeDown'; // This is set by the sql setup script so don't change it
 
 	try {
