@@ -1,5 +1,5 @@
 <?php
-	$server = 'localhost';
+	$server = 'database-service'; # The hostname of the docker container running the database
 	$username = 'root';
 	$password = 'root';
 	$database = 'TrackMeDown'; // This is set by the sql setup script so don't change it

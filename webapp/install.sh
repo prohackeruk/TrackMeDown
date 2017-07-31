@@ -1,5 +1,6 @@
 #!/bin/bash
-# Install 
+# Install
+# This should be unnecessary soon
 touch /checkroot 2>/dev/null
 
 uid=`stat -c "%u" /checkroot 2>/dev/null`
