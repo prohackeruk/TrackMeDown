@@ -13,7 +13,6 @@ then
 		cp -r ./* /var/www/html
 		echo "Starting server..."
 		# Just for my system
-		pkill python3
 		systemctl start apache2 # Start apache, it doesn't matter if it's already running, it will just pass
 		# systemctl start <your preferred web server>
 		systemctl start mysql # Start MySQL
