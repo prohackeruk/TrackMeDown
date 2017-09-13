@@ -28,7 +28,7 @@ Planned features:
 
 Notes:
 * You aren't allowed to send Navigator API location data over HTTP (thankfully), it has to be HTTPS. You can get an SSL cert for your server for free now -- LetsEncrypt is your friend -- so there's no reason not to anymore.
-* Note: The above may only be true for 
+* Note: The above may only be true for Chromium -- needs testing with other browsers.
 * The user has to accept the use of location services in their browser before you can track them. My advice is to edit the tracking page to have some content that will trick the user into enabling location services. There's a list of trackable browsers later in this file.
 * Obviously, if the user loses Internet connection, then they won't be able to send any more location updates, and you'll lose track of them. If you're tracking phones, though, it's possible (even likely, these days) that they have an Internet connection via whatever GSM network they're connected to.
 
