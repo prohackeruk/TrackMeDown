@@ -15,18 +15,20 @@ Features:
 * Each user's UserAgent header and IP address is logged when they first connect
 * Authentication so that only you and anybody who's cracked your crap password can see the data produced
 * All of the data produced by a device is displayed as a line on the map
+* Client-side location updates for the map, so the positions of your targets update in real time
+* A random color for each device's polyline
 
 Planned features:
-* A random color for each device's polyline, which can be changed
+* The ability to assign names to each device
+* Editing certain data about each device
 * Deleting devices who's data you no longer need/want
 * PHP session remembering so that each user can be tracked multiple times and remembered
-* Adding your own names for targets so you can keep track of them
 * Microservice architecture for goodness
-* Client-side location updates for the map so it updates in real-time
 * Docker support for one-line (if you already have Docker installed :P) setup
 
 Notes:
 * You aren't allowed to send Navigator API location data over HTTP (thankfully), it has to be HTTPS. You can get an SSL cert for your server for free now -- LetsEncrypt is your friend -- so there's no reason not to anymore.
+* Note: The above may only be true for 
 * The user has to accept the use of location services in their browser before you can track them. My advice is to edit the tracking page to have some content that will trick the user into enabling location services. There's a list of trackable browsers later in this file.
 * Obviously, if the user loses Internet connection, then they won't be able to send any more location updates, and you'll lose track of them. If you're tracking phones, though, it's possible (even likely, these days) that they have an Internet connection via whatever GSM network they're connected to.
 

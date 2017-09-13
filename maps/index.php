@@ -95,16 +95,17 @@
 				poly = new google.maps.Polyline({
 					path: points,
 					geodesic: true,
-					strokeColor: '#FF0000',
+					strokeColor: device['color'],
 					strokeOpacity: 1.0,
 					strokeWeight: 3
 				});
+				console.log("Device number " + device['id'] + " color: " + device['color']);
 				poly.setMap(map);
 				// Add a marker at the last point
 				var marker = new google.maps.Marker({
 					position: points[points.length - 1],
 					map: map,
-					title: device['token']
+					title: device['user_agent']
 				});
 				marker.setMap(map);
 			});
@@ -127,6 +128,6 @@
  */
 	</script>
 	<!-- Call the Google Maps API -->
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrSctxCpc9uvONzarhSatCnwwmyKAiNYo&callback=initMap&libraries=geometry"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM3ko2yoT3WNFKfl86XLpnUEquXRnwlF4&callback=initMap&libraries=geometry"></script>
 </body>
 </html>

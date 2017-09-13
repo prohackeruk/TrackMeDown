@@ -12,6 +12,7 @@ then
 		echo "Copying new version..."
 		cp -r ./* /var/www/html
 		echo "Starting server..."
+		pkill python3
 		# Just for my system
 		systemctl start apache2 # Start apache, it doesn't matter if it's already running, it will just pass
 		# systemctl start <your preferred web server>

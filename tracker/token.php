@@ -9,4 +9,9 @@
     	}
     	return $str;
 	}
+
+	function random_color() {
+		$color = "#" . random_str(6, "0123456789ABCDEF");
+		return $color;
+	}
 ?>
